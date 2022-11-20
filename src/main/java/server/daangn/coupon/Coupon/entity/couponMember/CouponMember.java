@@ -7,27 +7,23 @@ import server.daangn.coupon.Member.entity.Member;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=false)
 @IdClass(CouponMemberId.class)
-public class CouponMember extends EntityDate implements Serializable{
+public class CouponMember extends EntityDate implements Serializable {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member")
     private Member member;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "coupon_id")
+    @JoinColumn(name = "coupon")
     private Coupon coupon;
-
-    @Column
-    private LocalDate sopStartPeriod;
 
 }

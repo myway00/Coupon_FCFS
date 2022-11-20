@@ -7,11 +7,11 @@ import server.daangn.coupon.Member.entity.Member;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-
+@Data
 @Embeddable
 @EqualsAndHashCode
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 public class CouponMemberId implements Serializable {
 

@@ -75,6 +75,7 @@ public class CouponService {
     }
 
     // 전체 쿠폰 조회
+    // TODO : 동시성, 선착순 이벤트 구현 완료 후 남은 쿠폰 수, 발급 쿠폰 수에 대한 정보 포함해서 응답값에 추가
     @Transactional
     public List<CouponResponseDto> readAllCoupon() {
         return CouponResponseDto.toDtoList(

@@ -20,9 +20,8 @@ public class Member extends EntityDate {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CouponMember> couponMember = new HashSet<>();
 
-    public void addMember(CouponMember couponMember){
+    public void addCoupon(CouponMember couponMember){
         this.couponMember.add(couponMember);
     }
-
 
 }

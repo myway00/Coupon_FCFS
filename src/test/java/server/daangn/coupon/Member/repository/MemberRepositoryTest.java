@@ -42,7 +42,7 @@ class MemberRepositoryTest {
     }
 
     @Test
-    void createAndReadTest() {
+    public void createMemberAndReadTest() {
         // given
         Member member = createMember();
 
@@ -56,7 +56,7 @@ class MemberRepositoryTest {
     }
 
     @Test
-    void deleteTest() {
+    void deleteMemberTest() {
 
         // given
         Member member = memberRepository.save(createMember());

@@ -6,24 +6,31 @@ import server.daangn.coupon.Coupon.entity.coupon.Coupon;
 import server.daangn.coupon.Member.entity.Member;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper=false)
-@IdClass(CouponMemberId.class)
-public class CouponMember extends EntityDate implements Serializable {
+public class CouponMember extends EntityDate {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member")
     private Member member;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "coupon")
     private Coupon coupon;
+
+    public void  useCoupon(){
+        update(); // coupon의 updatedAt을 현재 시간으로 갱신
+    }
+
+    public CouponMember (Member member, Coupon coupon) {
+        this.member = member;
+        this.coupon = coupon;
+    }
 
 }

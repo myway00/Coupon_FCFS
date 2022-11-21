@@ -1,4 +1,4 @@
-package server.daangn.coupon.Common.entity.service;
+package server.daangn.coupon.Common.entity.initialData;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 import server.daangn.coupon.Coupon.entity.coupon.Coupon;
 import server.daangn.coupon.Coupon.entity.coupon.CouponType;
 import server.daangn.coupon.Coupon.repository.CouponRepository;
-import server.daangn.coupon.Member.entity.Member;
-import server.daangn.coupon.Member.repository.MemberRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -19,21 +17,26 @@ import java.util.stream.Collectors;
 @Slf4j
 @Profile("local")
 
-public class InitMember {
+/**
+ * 쿠폰 타입을 h2 DB 에 미리 생성하는 클래스
+ */
+public class InitCouponType {
 
-    private final MemberRepository memberRepository;
+    private final CouponRepository couponRepository;
 
     @PostConstruct
     public void initDB() {
-        initMember();
+        initCouponType();
     }
 
-    private void initMember() {
-
-        for(int i =0 ; i<50 ; i ++){
-            memberRepository.save(new Member());
-        }
-
+    private void initCouponType() {
+        couponRepository.saveAll(
+                List.of(CouponType.values()).stream().map(
+                        couponType ->
+                        new Coupon(
+                                couponType
+                        ))
+                        .collect(Collectors.toList())
+        );
     }
 }
-

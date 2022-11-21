@@ -15,7 +15,7 @@ public class Coupon {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true  )
     private CouponType couponType;
 
     public Coupon(CouponType couponType) {

@@ -135,19 +135,19 @@ public class CouponServiceTest {
 
     }
 
-    private Coupon createCoupon() {
+    public Coupon createCoupon() {
         return new Coupon(CouponType.E0001);
     }
 
-    private Member createMember() {
+    public Member createMember() {
         return new Member();
     }
 
-    private CouponMember createCouponMember(){
+    public CouponMember createCouponMember(){
         return new CouponMember(createMember(), createCoupon());
     }
 
-    private List<CouponMember> createCouponMembers(){
+    public List<CouponMember> createCouponMembers(){
         List<CouponMember> couponMembers = new ArrayList<>();
         for(int i=0; i<5 ; i++){
             couponMembers.add(new CouponMember(createMember(), createCoupon()));

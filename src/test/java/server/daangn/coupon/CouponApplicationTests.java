@@ -2,12 +2,10 @@ package server.daangn.coupon;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 
-@EnableJpaAuditing
 @SpringBootTest
-@WebAppConfiguration
+@ActiveProfiles("test")
 class CouponApplicationTests {
 
 	@Test

@@ -20,6 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static server.daangn.coupon.Coupon.dto.CouponRequestDtoFactory.createCouponRequest;
 import static server.daangn.coupon.Coupon.dto.CouponRequestDtoFactory.readCouponRequest;
@@ -58,7 +59,7 @@ public class ExceptionAdviceTest {
 
         // when, then
         mockMvc.perform(
-                        post("/coupon/{id}", 1L)
+                        get("/coupon/{id}", 1L)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(req)))
                 .andExpect(status().isNotFound());

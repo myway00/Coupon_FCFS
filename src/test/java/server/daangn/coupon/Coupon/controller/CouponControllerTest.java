@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -13,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import server.daangn.coupon.Coupon.dto.CouponRequestDto;
 import server.daangn.coupon.Coupon.service.CouponService;
 
+import static org.mockito.ArgumentMatchers.refEq;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,7 +36,7 @@ public class CouponControllerTest {
     @Test
     void createCouponAPITest() throws Exception {
         // given
-        CouponRequestDto req = createCouponRequest();
+        CouponRequestDto req = createNullCouponRequest();
 
         // when, then
         mockMvc.perform(
@@ -43,13 +45,13 @@ public class CouponControllerTest {
                                 .content(objectMapper.writeValueAsString(req)))
                 .andExpect(status().isCreated());
 
-        verify(couponService).createCoupon(req);
+        verify(couponService).createCoupon(refEq(req));
     }
 
     @Test
     void useCouponAPITest() throws Exception {
         // given
-        CouponRequestDto req = useCouponRequest();
+        CouponRequestDto req = createNullCouponRequest();
 
         // when, then
         mockMvc.perform(

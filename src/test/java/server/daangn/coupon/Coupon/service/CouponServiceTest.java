@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import server.daangn.coupon.Coupon.dto.CouponRequestDto;
 import server.daangn.coupon.Coupon.dto.CouponResponseDto;
 import server.daangn.coupon.Coupon.dto.TotalCouponResponseDto;
@@ -33,6 +34,7 @@ public class CouponServiceTest {
 
     @InjectMocks CouponService couponService;
     @Mock CouponMemberRepository couponMemberRepository;
+    @Mock CouponEventService couponEventService;
 
     @Test
     void validateCouponExceptionByDuplicateCouponTest(){
@@ -107,6 +109,8 @@ public class CouponServiceTest {
         // given
         List<CouponMember> coupons = createCouponMembers();
         given(couponMemberRepository.findAll()).willReturn(coupons);
+        given(couponEventService.getLeftCouponSize(CouponType.C0001)).willReturn(0L);
+        given(couponEventService.getLeftCouponSize(CouponType.E0001)).willReturn(0L);
 
         // when
         TotalCouponResponseDto couponResponseDto = couponService.readAllCoupon();

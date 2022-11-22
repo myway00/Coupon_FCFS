@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import server.daangn.coupon.Coupon.dto.CouponRequestDto;
 import server.daangn.coupon.Coupon.dto.CouponResponseDto;
+import server.daangn.coupon.Coupon.dto.TotalCouponResponseDto;
 import server.daangn.coupon.Coupon.entity.coupon.Coupon;
 import server.daangn.coupon.Coupon.entity.coupon.CouponType;
 import server.daangn.coupon.Coupon.entity.couponMember.CouponMember;
@@ -108,10 +109,10 @@ public class CouponServiceTest {
         given(couponMemberRepository.findAll()).willReturn(coupons);
 
         // when
-        List<CouponResponseDto> couponResponseDto = couponService.readAllCoupon();
+        TotalCouponResponseDto couponResponseDto = couponService.readAllCoupon();
 
         //then
-        assertThat(couponResponseDto.size()).isEqualTo(coupons.size());
+        assertThat(couponResponseDto.getCoupons().size()).isEqualTo(coupons.size());
 
     }
 

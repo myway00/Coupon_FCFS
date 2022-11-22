@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import server.daangn.coupon.Coupon.dto.CouponRequestDto;
 import server.daangn.coupon.Coupon.dto.CouponResponseDto;
+import server.daangn.coupon.Coupon.dto.TotalCouponResponseDto;
 import server.daangn.coupon.Coupon.entity.coupon.Coupon;
 import server.daangn.coupon.Coupon.entity.coupon.CouponType;
 import server.daangn.coupon.Coupon.entity.couponMember.CouponMember;
@@ -123,10 +124,13 @@ public class CouponService {
     // 전체 쿠폰 조회
     // TODO : 동시성, 선착순 이벤트 구현 완료 후 남은 쿠폰 수, 발급 쿠폰 수에 대한 정보 포함해서 응답값에 추가
     @Transactional
-    public List<CouponResponseDto> readAllCoupon() {
-        return CouponResponseDto.toDtoList(
-                couponMemberRepository.findAll()
-        );
+    public TotalCouponResponseDto readAllCoupon() {
+        return new TotalCouponResponseDto(
+                CouponResponseDto.toDtoList(couponMemberRepository.findAll()),
+                couponMemberRepository.findAll().size(),
+                couponEventService.getLeftCouponSize(CouponType.C0001),
+                couponEventService.getLeftCouponSize(CouponType.E0001)
+                );
     }
 
 }

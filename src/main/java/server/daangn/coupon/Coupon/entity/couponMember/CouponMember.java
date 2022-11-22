@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CouponMember extends EntityDate {
 
     @Id
@@ -25,7 +26,7 @@ public class CouponMember extends EntityDate {
     private Coupon coupon;
 
     public void  useCoupon(){
-        update(); // coupon의 updatedAt을 현재 시간으로 갱신
+        update(); // coupon 의 updatedAt을 현재 시간으로 갱신
     }
 
     public CouponMember (Member member, Coupon coupon) {

@@ -19,13 +19,13 @@ public class CouponController {
 
     @PostMapping("/coupon")
     @ResponseStatus(HttpStatus.CREATED)
-    public Response createCoupon(@Valid @RequestBody CouponRequestDto req) {
+    public Response createCoupon(@Valid CouponRequestDto req) throws InterruptedException {
         return success(couponService.createCoupon(req));
     }
 
     @PutMapping("/coupon")
     @ResponseStatus(HttpStatus.OK)
-    public Response useCoupon(@Valid @RequestBody CouponRequestDto req) {
+    public Response useCoupon(@Valid CouponRequestDto req) {
         return success(couponService.useCoupon(req));
     }
 

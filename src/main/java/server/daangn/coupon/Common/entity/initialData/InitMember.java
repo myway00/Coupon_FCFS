@@ -24,11 +24,10 @@ public class InitMember {
     }
 
     private void initMember() {
-
-        for(int i =0 ; i<50 ; i ++){
+        for(int i =0 ; i<101 ; i ++){
             memberRepository.save(new Member());
         }
-
     }
+
 }
 

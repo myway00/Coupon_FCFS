@@ -13,22 +13,17 @@ import server.daangn.coupon.Coupon.entity.coupon.CouponType;
 import server.daangn.coupon.Coupon.entity.couponMember.CouponMember;
 import server.daangn.coupon.Coupon.exception.CouponDuplicateException;
 import server.daangn.coupon.Coupon.exception.CouponMemberNotFoundException;
-import server.daangn.coupon.Coupon.exception.CouponNotFoundException;
 import server.daangn.coupon.Coupon.repository.CouponMemberRepository;
-import server.daangn.coupon.Coupon.repository.CouponRepository;
 import server.daangn.coupon.Member.entity.Member;
-import server.daangn.coupon.Member.repository.MemberRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
+
 import static server.daangn.coupon.Coupon.dto.CouponRequestDtoFactory.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -37,8 +32,6 @@ public class CouponServiceTest {
 
     @InjectMocks CouponService couponService;
     @Mock CouponMemberRepository couponMemberRepository;
-    @Mock MemberRepository memberRepository;
-    @Mock CouponRepository couponRepository;
 
     @Test
     void validateCouponExceptionByDuplicateCouponTest(){
@@ -51,19 +44,6 @@ public class CouponServiceTest {
         assertThatThrownBy(() -> couponService.checkDuplicateCoupon(any(), any()))
                 .isInstanceOf(CouponDuplicateException.class);
 
-    }
-
-    @Test
-    void validateCouponExceptionByCouponNotFoundTest(){
-
-        // given
-        given(memberRepository.findById(any())).willReturn(Optional.of(createMember()));
-        given(couponRepository.findByCouponType(any())).willReturn(Optional.of(createCoupon()));
-        given(couponMemberRepository.findByMemberAndCoupon(any(), any())).willReturn(Optional.empty());
-
-        // when, then
-        assertThatThrownBy(() -> couponService.createCoupon(createCouponRequest()))
-                .isInstanceOf(CouponNotFoundException.class);
     }
 
     @Test

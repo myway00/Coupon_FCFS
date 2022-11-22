@@ -11,5 +11,5 @@ public interface CouponMemberRepository extends JpaRepository<CouponMember, Long
 
     Optional<CouponMember> findByMember(Member member);
     Optional<CouponMember> findByCoupon(Coupon coupon);
-    Optional<CouponMember> findByMemberAndCoupon(Member member, Coupon coupon);
+    Optional<CouponMember> findByMemberAndCoupon( Member member,Coupon coupon);
 }

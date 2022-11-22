@@ -35,7 +35,6 @@ public class SchedulerService {
             if (couponEventService.validEnd(CouponType.C0001)) {
                 log.info("=====  " + CouponType.C0001.couponName() + "선착순 쿠폰 발급 종료 =====");
                 C00001EndFlag = true;
-                //throw new CouponRunOutException();
             }
             couponEventService.publish(CouponType.C0001);
             couponEventService.getOrder(CouponType.C0001);
@@ -59,7 +58,6 @@ public class SchedulerService {
             if (couponEventService.validEnd(CouponType.E0001)) {
                 log.info("===== " + CouponType.E0001.couponName() + " 선착순 쿠폰 발급 종료 =====");
                 E00001EndFlag = true;
-                //throw new CouponRunOutException();
             }
             couponEventService.publish(CouponType.E0001);
             couponEventService.getOrder(CouponType.E0001);

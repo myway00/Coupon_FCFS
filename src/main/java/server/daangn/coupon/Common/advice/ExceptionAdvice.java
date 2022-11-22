@@ -47,7 +47,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(CouponRunOutException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public Response CouponRunOutException() {
-        return Response.failure(405, " 아쉽게도 쿠폰이 모두 소진돼었어요! ");
+        return Response.failure(405, " 아쉽게도 쿠폰이 모두 소진되었어요! ");
     }
 
     @ExceptionHandler(CouponIssueException.class)

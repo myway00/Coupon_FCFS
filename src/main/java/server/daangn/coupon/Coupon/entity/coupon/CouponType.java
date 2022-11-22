@@ -10,7 +10,7 @@ public enum CouponType {
 
     private final String couponName;
 
-    private final double discountPrice;
+    private final double discount;
 
     private final int number;
 
@@ -18,8 +18,8 @@ public enum CouponType {
         return couponName;
     }
 
-    public double discountPrice() {
-        return discountPrice;
+    public double discount() {
+        return discount;
     }
 
     public int number() {

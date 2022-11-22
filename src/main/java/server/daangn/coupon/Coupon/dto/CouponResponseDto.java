@@ -37,7 +37,7 @@ public class CouponResponseDto {
                 couponMember.getMember().getId(),
                 couponMember.getCoupon().getCouponType().name(),
                 couponMember.getCoupon().getCouponType().couponName(),
-                couponMember.getCoupon().getCouponType().discountPrice(),
+                couponMember.getCoupon().getCouponType().discount(),
                 couponMember.getUpdatedAt() != null,
                 couponMember.getCreatedAt(),
                 couponMember.getUpdatedAt()
@@ -53,7 +53,7 @@ public class CouponResponseDto {
                         couponMember.getMember().getId(),
                         couponMember.getCoupon().getCouponType().name(),
                         couponMember.getCoupon().getCouponType().couponName(),
-                        couponMember.getCoupon().getCouponType().discountPrice(),
+                        couponMember.getCoupon().getCouponType().discount(),
                         couponMember.getUpdatedAt() != null,
                         couponMember.getCreatedAt(),
                         couponMember.getUpdatedAt()

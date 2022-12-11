@@ -37,8 +37,7 @@
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57c1fe87-fd66-46b9-8be8-fd534ca074c4/Untitled.png)
-
+![image](https://user-images.githubusercontent.com/76711238/206889554-adf747e8-7021-44a8-bac5-990b89677c08.png)
 ---
 
 ## Test

@@ -61,7 +61,7 @@
 
 ---
 
-## ERD (2023.04 추가)
+## ERD 
 
 ![image](https://user-images.githubusercontent.com/76711238/232262740-730b098f-a137-4281-90cd-43c6bae83efa.png)
 
